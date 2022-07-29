@@ -26,7 +26,7 @@
                 function showWeather(){
                     cityname = document.getElementById("city").value;
                     httprequest = new XMLHttpRequest();
-                    httprequest.open("GET","https://api.weatherbit.io/v2.0/current?&city="+cityname+"&key=e6b3cf8585884943844765ba0edfbe89");
+                    httprequest.open("GET","https://api.weatherbit.io/v2.0/current?&city="+cityname+"&key=APIkey");
                     httprequest.send();
                     httprequest.onreadystatechange = function(){
                         if(this.readyState == 4 && this.status == 200){
