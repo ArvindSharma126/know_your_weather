@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Know your weather</title>
+        <link rel="stylesheet" type="text/css" href="weather.css">
+    </head>
+    <body>
+        <header>
+            <img class="header-clipart left-clipart" src="sunny_day.png">
+            <img class="header-clipart left-clipart" src="cloudy.png">
+            <img class="header-clipart left-clipart" src="rainy.png">
+            <img class="header-clipart left-clipart" src="windy.png">
+            <img class="header-clipart right-clipart" src="windy.png">
+            <img class="header-clipart right-clipart" src="rainy.png">
+            <img class="header-clipart right-clipart" src="cloudy.png">
+            <img class="header-clipart right-clipart" src="sunny_day.png">
+            <h1 class="heading">Know yours city's Weather</h1>
+        </header>
+        <div class="input_div">
+            <span>City : </span>
+            <span>
+                <input type="text" id="city">
+            </span>
+            <button onclick="showWeather()">Submit</button>
+            <script type="text/javascript">
+                function showWeather(){
+                    cityname = document.getElementById("city").value;
+                    httprequest = new XMLHttpRequest();
+                    httprequest.open("GET","https://api.weatherbit.io/v2.0/current?&city="+cityname+"&key=e6b3cf8585884943844765ba0edfbe89");
+                    httprequest.send();
+                    httprequest.onreadystatechange = function(){
+                        if(this.readyState == 4 && this.status == 200){
+                            weather_data = JSON.parse(this.responseText);
+                            temp = weather_data.data[0].temp;
+                            document.getElementById("temperature").innerHTML = temp;
+                            document.getElementById("wind_speed").innerHTML = weather_data.data[0].wind_spd;
+                            document.getElementById("pressure").innerHTML = weather_data.data[0].pres;
+                            document.getElementById("weather_image").src = "https://www.weatherbit.io/static/img/icons/"+weather_data.data[0].weather.icon+".png";
+                            document.getElementById("weather-report-div").style.visibility = "visible";
+                        }
+                    }
+                }
+        </script>
+        </div>
+        <div id="weather-report-div">
+            <table id="report">
+                <tr>
+                    <td><img id="weather_image"></td>
+                    <td>
+                        <table>
+                            <tr>
+                                <td><img id = "temperature_icon" src="temp.png"></td>
+                                <td>Temperature : </td>
+                                <td id = "temperature"></td>
+                                <td>&#8451</td>
+                            </tr>
+                            <tr>
+                                <td><img id = "wind_icon" src="windy.png"></td>
+                                <td>Wind : </td>
+                                <td id = "wind_speed"></td>
+                                <td>m/s</td>
+                            </tr>
+                            <tr>
+                                <td><img id="pressure_icon" src="pressure_icon.png"></td>
+                                <td>Pressure : </td>
+                                <td id = "pressure"></td>
+                                <td>MB</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>

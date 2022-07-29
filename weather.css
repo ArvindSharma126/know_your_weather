@@ -1,0 +1,68 @@
+body{
+    background-image: url(background.jpg);
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+}
+
+header{
+    background-color: #305ab4;
+    top: 0px;
+    height: 100px;
+    text-align: center;
+}
+
+.header-clipart{
+    height: 90px;
+}
+
+.left-clipart{
+    float: left;
+}
+
+.right-clipart{
+    float: right;
+}
+
+.heading{
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+    top: 30%;
+    color: white;
+    font-family:cursive;
+}
+
+.input_div{
+    color: red;
+    position: relative;
+    font-family: cursive;
+    font-size: 25px;
+    text-align: center;
+    top: 20px;
+}
+
+.input_div input,button{
+    font-size: 22px;
+}
+
+#weather-report-div{
+    width: 100%;
+    visibility: hidden;
+}
+
+#weather_image{
+    height: 200px;
+}
+
+#report{
+    position: relative;
+    background-color: white;
+    text-align: center;
+    left:35%;
+    top: 160px;
+}
+
+#temperature_icon,#wind_icon,#pressure_icon{
+    height: 30px;
+}    
